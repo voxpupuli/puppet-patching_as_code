@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'time'
 
 Facter.add('patching_as_code_utc_offset') do

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 Puppet::Functions.create_function(:'patching_as_code::last_run') do
   dispatch :last_run do
     param 'Array', :patches

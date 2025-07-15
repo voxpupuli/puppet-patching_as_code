@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'pathname'
 
 Facter.add('patch_unsafe_process_active') do
@@ -8,14 +10,14 @@ Facter.add('patch_unsafe_process_active') do
       when 'windows'
         if full
           tasklist = `wmic path win32_process get Commandline`.downcase
-          processname = processname[6..-1].strip
+          processname = processname[6..].strip
         else
           tasklist = `wmic path win32_process get Caption`.downcase
         end
       when 'Linux'
         if full
           tasklist = `ps -Ao cmd`.downcase
-          processname = processname[6..-1].strip
+          processname = processname[6..].strip
         else
           tasklist = `ps -Ao comm`.downcase
         end
@@ -23,12 +25,13 @@ Facter.add('patch_unsafe_process_active') do
       tasklist.include? processname.downcase
     end
 
-    processfile = Pathname.new(Puppet.settings['confdir'] + '/patching_unsafe_processes')
+    processfile = Pathname.new("#{Puppet.settings['confdir']}/patching_unsafe_processes")
     result = false
     if processfile.exist?
-      unsafe_processes = File.open(processfile, 'r').read
+      unsafe_processes = File.read(processfile)
       unsafe_processes.each_line do |line|
         next if line.match?(%r{^#|^$})
+
         if line.match?(%r{^{full}})
           next if process_running(line.chomp, true) == false
         elsif process_running(line.chomp) == false

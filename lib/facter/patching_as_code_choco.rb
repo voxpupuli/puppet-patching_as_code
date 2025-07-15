@@ -1,15 +1,10 @@
+# frozen_string_literal: true
 
 Facter.add('patching_as_code_choco') do
   confine kernel: 'windows'
   setcode do
-    if Facter.fact(:patching_as_code_config).nil?
-      {
-        'package_update_count' => 0,
-        'packages' => [],
-        'pinned_packages' => []
-      }
-    elsif Facter.value(:patching_as_code_config)['patch_choco'] == true
-      programdata = ENV['ProgramData']
+    if Facter.value(:patching_as_code_config)['patch_choco'] == true
+      programdata = ENV.fetch('ProgramData', nil)
       choco = "#{programdata}\\chocolatey\\bin\\choco.exe"
       output = if File.exist?(choco)
                  Facter::Util::Resolution.exec("#{choco} outdated -r").to_s.split("\n")
@@ -18,6 +13,7 @@ Facter.add('patching_as_code_choco') do
                end
       packages = []
       pinned = []
+      # rubocop:disable Style/CombinableLoops
       # Determine Pinned packages (to be excluded from updating)
       output.each do |line|
         data = line.chomp.split('|')
@@ -34,6 +30,7 @@ Facter.add('patching_as_code_choco') do
 
         packages.push(data[0]) if data[3] == 'false'
       end
+      # rubocop:enable Style/CombinableLoops
       result = {}
       result['package_update_count'] = packages.count
       result['packages'] = packages

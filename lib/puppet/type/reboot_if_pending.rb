@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 Puppet::Type.newtype(:reboot_if_pending) do
   @doc = 'Perform a clean reboot if it was pending before this agent run'
 
@@ -16,7 +18,7 @@ Puppet::Type.newtype(:reboot_if_pending) do
 
   # All parameters are required
   validate do
-    [:name, :patch_window, :os].each do |param|
+    %i[name patch_window os].each do |param|
       raise Puppet::Error, "Required parameter missing: #{param}" unless @parameters[param]
     end
   end
@@ -28,7 +30,7 @@ Puppet::Type.newtype(:reboot_if_pending) do
     kernel = parameter(:os).value.downcase
     case kernel
     when 'windows'
-      sysroot = ENV['SystemRoot']
+      sysroot = ENV.fetch('SystemRoot', nil)
       powershell = "#{sysroot}\\system32\\WindowsPowerShell\\v1.0\\powershell.exe"
       # get the script path relative to the Puppet Type
       checker_script = File.join(
@@ -36,7 +38,7 @@ Puppet::Type.newtype(:reboot_if_pending) do
         '..',
         '..',
         'patching_as_code',
-        'pending_reboot.ps1',
+        'pending_reboot.ps1'
       )
       pending_reboot = Puppet::Util::Execution.execute("#{powershell} -ExecutionPolicy Bypass -NoProfile -NoLogo -NonInteractive -File #{checker_script}", { failonfail: false }).exitstatus.to_i.zero?
     when 'linux'
@@ -46,7 +48,7 @@ Puppet::Type.newtype(:reboot_if_pending) do
         '..',
         '..',
         'patching_as_code',
-        'pending_reboot.sh',
+        'pending_reboot.sh'
       )
       pending_reboot = Puppet::Util::Execution.execute("/bin/sh #{checker_script}", { failonfail: false }).exitstatus.to_i.zero?
     else
@@ -62,7 +64,7 @@ Puppet::Type.newtype(:reboot_if_pending) do
     catalog.resources.each do |res|
       next unless res.type.to_s == 'exec'
       next unless res['tag'].is_a? Array
-      next unless (res['tag'] & ['patching_as_code_pre_patching', 'patching_as_code_post_patching', 'patching_as_code_pre_reboot']).any?
+      next unless (res['tag'] & %w[patching_as_code_pre_patching patching_as_code_post_patching patching_as_code_pre_reboot]).any?
 
       if res['tag'].include?('patching_as_code_pre_patching')
         pre_patch_resources << res
@@ -91,7 +93,7 @@ Puppet::Type.newtype(:reboot_if_pending) do
                            apply: 'immediately',
                            schedule: parameter(:patch_window).value,
                            before: 'Anchor[patching_as_code::start]',
-                           require: pre_reboot_resources,
+                           require: pre_reboot_resources
                          ))
 
     catalog.add_resource(Puppet::Type.type('notify').new(
@@ -99,14 +101,16 @@ Puppet::Type.newtype(:reboot_if_pending) do
                            schedule: parameter(:patch_window).value,
                            notify: 'Reboot[Patching as Code - Pending OS reboot]',
                            before: 'Anchor[patching_as_code::start]',
-                           require: pre_reboot_resources,
+                           require: pre_reboot_resources
                          ))
   end
 
   def retrieve_resource_reference(res)
     case res
     when Puppet::Type
+      # empty by design
     when Puppet::Resource
+      # empty by design
     when String
       begin
         Puppet::Resource.new(res)

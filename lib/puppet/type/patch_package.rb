@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 Puppet::Type.newtype(:patch_package) do
   @doc = 'Define a package resource to patch'
 
@@ -16,7 +18,7 @@ Puppet::Type.newtype(:patch_package) do
 
   # All parameters are required
   validate do
-    [:name, :patch_window, :chocolatey].each do |param|
+    %i[name patch_window chocolatey].each do |param|
       raise Puppet::Error, "Required parameter missing: #{param}" unless @parameters[param]
     end
   end
@@ -24,25 +26,21 @@ Puppet::Type.newtype(:patch_package) do
   # See if the package to patch exists in the catalog
   # If package is not found, create a one-time package resource
   def eval_generate
-    package_in_catalog = if retrieve_package_title(name).empty?
-                           false
-                         else
-                           true
-                         end
+    package_in_catalog = !retrieve_package_title(name).empty?
 
     if package_in_catalog
       []
     elsif self[:chocolatey] == true
       [Puppet::Type.type(:package).new(name: name,
-                                      ensure: 'latest',
-                                      provider: 'chocolatey',
-                                      schedule: self[:patch_window],
-                                      before: 'Anchor[patching_as_code::patchday::end]')]
+                                       ensure: 'latest',
+                                       provider: 'chocolatey',
+                                       schedule: self[:patch_window],
+                                       before: 'Anchor[patching_as_code::patchday::end]')]
     else
       [Puppet::Type.type(:package).new(name: name,
-                                        ensure: 'latest',
-                                        schedule: self[:patch_window],
-                                        before: 'Anchor[patching_as_code::patchday::end]')]
+                                       ensure: 'latest',
+                                       schedule: self[:patch_window],
+                                       before: 'Anchor[patching_as_code::patchday::end]')]
     end
   end
 
@@ -58,7 +56,7 @@ Puppet::Type.newtype(:patch_package) do
     end
 
     if package_in_catalog
-      if ['present', 'installed', 'latest'].include?(res['ensure'].to_s)
+      if %w[present installed latest].include?(res['ensure'].to_s)
         Puppet.send('notice', "Package[#{name}] (managed) will be updated by Patching_as_code")
         catalog.resource(package_res)['ensure'] = 'latest'
         catalog.resource(package_res)['provider'] = 'chocolatey' if self[:chocolatey] == true
@@ -89,7 +87,9 @@ Puppet::Type.newtype(:patch_package) do
   def retrieve_resource_reference(res)
     case res
     when Puppet::Type
+      # empty by design
     when Puppet::Resource
+      # empty by design
     when String
       begin
         Puppet::Resource.new(res)
