@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 Puppet::Functions.create_function(:'patching_as_code::dedupe_arch') do
   dispatch :dedupe_arch do
     param 'Array', :patches

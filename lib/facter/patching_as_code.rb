@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 Facter.add('patching_as_code') do
-  confine kernel: ['windows', 'Linux']
+  confine kernel: %w[windows Linux]
 
   setcode do
     directory      = "#{Facter.value(:puppet_vardir)}/../../patching_as_code"
@@ -9,7 +11,7 @@ Facter.add('patching_as_code') do
     begin
       # Migrate last_run file if still in old location
       if File.exist?(oldfile)
-        Dir.mkdir(directory) unless Dir.exist?(directory)
+        FileUtils.mkdir_p(directory)
         File.rename oldfile, file
       end
       last_run           = JSON.parse(File.read(file)) if File.exist?(file)
@@ -38,7 +40,7 @@ Facter.add('patching_as_code') do
         result['choco_patches_installed_on_last_high_prio_run'] = high_prio_last_run['choco_patches_installed']
       end
       result
-    rescue
+    rescue StandardError
       {
         'last_patch_run'                                => '',
         'days_since_last_patch_run'                     => 0,
