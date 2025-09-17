@@ -1,8 +1,14 @@
-# puppetlabs-patching_as_code
+# puppet-patching_as_code
 
-> This module is supported by the Puppet community. We expect it to be of the same high
-> quality as our own Supported modules, but it does not qualify for Puppet Support plans.
-> See the `CODEOWNERS` file for usernames of the maintainers.
+[![Build Status](https://github.com/voxpupuli/puppet-patching_as_code/workflows/CI/badge.svg)](https://github.com/voxpupuli/puppet-patching_as_code/actions?query=workflow%3ACI)
+[![Release](https://github.com/voxpupuli/puppet-patching_as_code/actions/workflows/release.yml/badge.svg)](https://github.com/voxpupuli/puppet-patching_as_code/actions/workflows/release.yml)
+[![Puppet Forge](https://img.shields.io/puppetforge/v/puppet/patching_as_code.svg)](https://forge.puppetlabs.com/puppet/patching_as_code)
+[![Puppet Forge - downloads](https://img.shields.io/puppetforge/dt/puppet/patching_as_code.svg)](https://forge.puppetlabs.com/puppet/patching_as_code)
+[![Puppet Forge - endorsement](https://img.shields.io/puppetforge/e/puppet/patching_as_code.svg)](https://forge.puppetlabs.com/puppet/patching_as_code)
+[![Puppet Forge - scores](https://img.shields.io/puppetforge/f/puppet/patching_as_code.svg)](https://forge.puppetlabs.com/puppet/patching_as_code)
+[![puppetmodule.info docs](https://www.puppetmodule.info/images/badge.png)](https://www.puppetmodule.info/m/puppet-patching_as_code)
+[![AGPL v3 License](https://img.shields.io/github/license/voxpupuli/puppet-patching_as_code.svg)](LICENSE)
+[![Donated by Camptocamp](https://img.shields.io/badge/donated%20by-Perforce-fb7047.svg)](#transfer-notice)
 
 #### Table of Contents
 
@@ -296,3 +302,11 @@ Note that specifically for `patching_as_code::pre_reboot_commands`, the `provide
 ## Limitations
 
 This solution will patching to initiate whenever an agent run occurs inside the patch window. On Windows, patch runs for Cumulative Updates can take a long time, so you may want to tune the hours of your patch windows to account for a patch run getting started near the end of the window and still taking a significant amount of time.
+
+## Transfer Notice
+
+This plugin was originally authored by [Perforce](http://www.perforce.com).
+The maintainer preferred that Vox PUpuli take ownership of the module for future improvement and maintenance.
+Existing pull requests and issues were transferred over, please fork and continue to contribute here instead of Perforce.
+
+Previously: https://github.com/puppetlabs/puppetlabs-patching_as_code
