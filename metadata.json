@@ -38,15 +38,8 @@
       ]
     },
     {
-      "operatingsystem": "CentOS",
-      "operatingsystemrelease": [
-        "7"
-      ]
-    },
-    {
       "operatingsystem": "OracleLinux",
       "operatingsystemrelease": [
-        "7",
         "8",
         "9"
       ]
@@ -54,7 +47,6 @@
     {
       "operatingsystem": "RedHat",
       "operatingsystemrelease": [
-        "7",
         "8",
         "9"
       ]
@@ -67,15 +59,8 @@
       ]
     },
     {
-      "operatingsystem": "Scientific",
-      "operatingsystemrelease": [
-        "7"
-      ]
-    },
-    {
       "operatingsystem": "Debian",
       "operatingsystemrelease": [
-        "10",
         "11",
         "12"
       ]
@@ -83,16 +68,12 @@
     {
       "operatingsystem": "Ubuntu",
       "operatingsystemrelease": [
-        "18.04",
-        "20.04",
         "22.04"
       ]
     },
     {
       "operatingsystem": "windows",
       "operatingsystemrelease": [
-        "2012",
-        "2012 R2",
         "2016",
         "2019",
         "2022",
@@ -102,8 +83,6 @@
     {
       "operatingsystem": "SLES",
       "operatingsystemrelease": [
-        "11",
-        "12",
         "15"
       ]
     }
