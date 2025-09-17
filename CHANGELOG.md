@@ -1,397 +1,365 @@
-<!-- markdownlint-disable MD024 -->
 # Changelog
 
 All notable changes to this project will be documented in this file.
+Each new release typically also includes the latest modulesync defaults.
+These should not affect the functionality of the module.
 
-The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/) and this project adheres to [Semantic Versioning](http://semver.org).
+## [v3.0.0](https://github.com/voxpupuli/puppet-patching_as_code/tree/v3.0.0) (2025-09-17)
 
-## [v2.0.1](https://github.com/puppetlabs/puppetlabs-patching_as_code/tree/v2.0.1) - 2025-02-07
+[Full Changelog](https://github.com/voxpupuli/puppet-patching_as_code/compare/v2.0.1...v3.0.0)
 
-[Full Changelog](https://github.com/puppetlabs/puppetlabs-patching_as_code/compare/v2.0.0...v2.0.1)
+**Breaking changes:**
+
+- Drop puppet, update openvox minimum version to 8.19 [\#119](https://github.com/voxpupuli/puppet-patching_as_code/pull/119) ([TheMeier](https://github.com/TheMeier))
+- Remove Puppet 6 and EOL OSes [\#117](https://github.com/voxpupuli/puppet-patching_as_code/pull/117) ([jstraw](https://github.com/jstraw))
+
+**Implemented enhancements:**
+
+- puppetlabs/pwshlib: Allow 2.x [\#118](https://github.com/voxpupuli/puppet-patching_as_code/pull/118) ([TheMeier](https://github.com/TheMeier))
+- metadata.json: Add OpenVox [\#116](https://github.com/voxpupuli/puppet-patching_as_code/pull/116) ([jstraw](https://github.com/jstraw))
+- Also permit puppet-extlib to provide the puppet\_config directory [\#112](https://github.com/voxpupuli/puppet-patching_as_code/pull/112) ([jcpunk](https://github.com/jcpunk))
+
+**Fixed bugs:**
+
+- Fact patching\_as\_code not working, wrong confine [\#107](https://github.com/voxpupuli/puppet-patching_as_code/issues/107)
+
+**Merged pull requests:**
+
+- fix syntax error by jcpunk [\#122](https://github.com/voxpupuli/puppet-patching_as_code/pull/122) ([spotter-puppet](https://github.com/spotter-puppet))
+- prepare for migration to Vox Pupuli [\#113](https://github.com/voxpupuli/puppet-patching_as_code/pull/113) ([spotter-puppet](https://github.com/spotter-puppet))
+
+## [v2.0.1](https://github.com/voxpupuli/puppet-patching_as_code/tree/v2.0.1) - (2025-02-07)
+
+[Full Changelog](https://github.com/voxpupuli/puppet-patching_as_code/compare/v2.0.0...v2.0.1)
 
 ### Other
 
-- logic error and wrong kernel fact result [#110](https://github.com/puppetlabs/puppetlabs-patching_as_code/pull/110) ([spotter-puppet](https://github.com/spotter-puppet))
+- logic error and wrong kernel fact result [#110](https://github.com/voxpupuli/puppet-patching_as_code/pull/110) ([spotter-puppet](https://github.com/spotter-puppet))
 
-## [v2.0.0](https://github.com/puppetlabs/puppetlabs-patching_as_code/tree/v2.0.0) - 2024-08-29
+## [v2.0.0](https://github.com/voxpupuli/puppet-patching_as_code/tree/v2.0.0) - 2024-08-29
 
-[Full Changelog](https://github.com/puppetlabs/puppetlabs-patching_as_code/compare/v1.1.9...v2.0.0)
+[Full Changelog](https://github.com/voxpupuli/puppet-patching_as_code/compare/v1.1.9...v2.0.0)
 
 ### Other
 
-- fix dates [#104](https://github.com/puppetlabs/puppetlabs-patching_as_code/pull/104) ([spotter-puppet](https://github.com/spotter-puppet))
-- V2.0.0 [#103](https://github.com/puppetlabs/puppetlabs-patching_as_code/pull/103) ([spotter-puppet](https://github.com/spotter-puppet))
-- V1.1.8 [#100](https://github.com/puppetlabs/puppetlabs-patching_as_code/pull/100) ([spotter-puppet](https://github.com/spotter-puppet))
+- fix dates [#104](https://github.com/voxpupuli/puppet-patching_as_code/pull/104) ([spotter-puppet](https://github.com/spotter-puppet))
+- V2.0.0 [#103](https://github.com/voxpupuli/puppet-patching_as_code/pull/103) ([spotter-puppet](https://github.com/spotter-puppet))
+- V1.1.8 [#100](https://github.com/voxpupuli/puppet-patching_as_code/pull/100) ([spotter-puppet](https://github.com/spotter-puppet))
 
-## [v1.1.9](https://github.com/puppetlabs/puppetlabs-patching_as_code/tree/v1.1.9) - 2024-08-28
+## [v1.1.9](https://github.com/voxpupuli/puppet-patching_as_code/tree/v1.1.9) - 2024-08-28
 
-[Full Changelog](https://github.com/puppetlabs/puppetlabs-patching_as_code/compare/v1.1.7...v1.1.9)
+[Full Changelog](https://github.com/voxpupuli/puppet-patching_as_code/compare/v1.1.7...v1.1.9)
 
 ### Fixed
 
-- Fix unsafe process list [#89](https://github.com/puppetlabs/puppetlabs-patching_as_code/pull/89) ([kreeuwijk](https://github.com/kreeuwijk))
+- Fix unsafe process list [#89](https://github.com/voxpupuli/puppet-patching_as_code/pull/89) ([kreeuwijk](https://github.com/kreeuwijk))
 
 ### Other
 
-- V1.1.8 [#100](https://github.com/puppetlabs/puppetlabs-patching_as_code/pull/100) ([spotter-puppet](https://github.com/spotter-puppet))
--  Powershell scripts should be executed with the -NoProfile parameter [#96](https://github.com/puppetlabs/puppetlabs-patching_as_code/pull/96) ([elfranne](https://github.com/elfranne))
-- Exclude 'patching_as_code' fact from running on Darwin systems [#93](https://github.com/puppetlabs/puppetlabs-patching_as_code/pull/93) ([kennyb-222](https://github.com/kennyb-222))
-- Pdk release prep fix fix [#92](https://github.com/puppetlabs/puppetlabs-patching_as_code/pull/92) ([kreeuwijk](https://github.com/kreeuwijk))
-- fix PDK Release Prep action step [#91](https://github.com/puppetlabs/puppetlabs-patching_as_code/pull/91) ([kreeuwijk](https://github.com/kreeuwijk))
-- remove travis [#87](https://github.com/puppetlabs/puppetlabs-patching_as_code/pull/87) ([binford2k](https://github.com/binford2k))
+- V1.1.8 [#100](https://github.com/voxpupuli/puppet-patching_as_code/pull/100) ([spotter-puppet](https://github.com/spotter-puppet))
+-  Powershell scripts should be executed with the -NoProfile parameter [#96](https://github.com/voxpupuli/puppet-patching_as_code/pull/96) ([elfranne](https://github.com/elfranne))
+- Exclude 'patching_as_code' fact from running on Darwin systems [#93](https://github.com/voxpupuli/puppet-patching_as_code/pull/93) ([kennyb-222](https://github.com/kennyb-222))
+- Pdk release prep fix fix [#92](https://github.com/voxpupuli/puppet-patching_as_code/pull/92) ([kreeuwijk](https://github.com/kreeuwijk))
+- fix PDK Release Prep action step [#91](https://github.com/voxpupuli/puppet-patching_as_code/pull/91) ([kreeuwijk](https://github.com/kreeuwijk))
+- remove travis [#87](https://github.com/voxpupuli/puppet-patching_as_code/pull/87) ([binford2k](https://github.com/binford2k))
 
-## [v1.1.7](https://github.com/puppetlabs/puppetlabs-patching_as_code/tree/v1.1.7) - 2022-11-01
+## [v1.1.7](https://github.com/voxpupuli/puppet-patching_as_code/tree/v1.1.7) - 2022-11-01
 
-[Full Changelog](https://github.com/puppetlabs/puppetlabs-patching_as_code/compare/v1.1.6...v1.1.7)
+[Full Changelog](https://github.com/voxpupuli/puppet-patching_as_code/compare/v1.1.6...v1.1.7)
 
 ### Fixed
 
-- Release 1.1.7: More robust reboot check and update docs [#79](https://github.com/puppetlabs/puppetlabs-patching_as_code/pull/79) ([kreeuwijk](https://github.com/kreeuwijk))
+- Release 1.1.7: More robust reboot check and update docs [#79](https://github.com/voxpupuli/puppet-patching_as_code/pull/79) ([kreeuwijk](https://github.com/kreeuwijk))
 
-## [v1.1.6](https://github.com/puppetlabs/puppetlabs-patching_as_code/tree/v1.1.6) - 2022-09-28
+## [v1.1.6](https://github.com/voxpupuli/puppet-patching_as_code/tree/v1.1.6) - 2022-09-28
 
-[Full Changelog](https://github.com/puppetlabs/puppetlabs-patching_as_code/compare/v1.1.5...v1.1.6)
+[Full Changelog](https://github.com/voxpupuli/puppet-patching_as_code/compare/v1.1.5...v1.1.6)
 
 ### Fixed
 
-- fix release versions to match tags [#74](https://github.com/puppetlabs/puppetlabs-patching_as_code/pull/74) ([binford2k](https://github.com/binford2k))
-- improved logic for pre_reboot_commands [#73](https://github.com/puppetlabs/puppetlabs-patching_as_code/pull/73) ([kreeuwijk](https://github.com/kreeuwijk))
-- setting up history for auto changelog generation [#72](https://github.com/puppetlabs/puppetlabs-patching_as_code/pull/72) ([binford2k](https://github.com/binford2k))
+- fix release versions to match tags [#74](https://github.com/voxpupuli/puppet-patching_as_code/pull/74) ([binford2k](https://github.com/binford2k))
+- improved logic for pre_reboot_commands [#73](https://github.com/voxpupuli/puppet-patching_as_code/pull/73) ([kreeuwijk](https://github.com/kreeuwijk))
+- setting up history for auto changelog generation [#72](https://github.com/voxpupuli/puppet-patching_as_code/pull/72) ([binford2k](https://github.com/binford2k))
 
-## [v1.1.5](https://github.com/puppetlabs/puppetlabs-patching_as_code/tree/v1.1.5) - 2022-09-28
+## v1.1.5
 
-[Full Changelog](https://github.com/puppetlabs/puppetlabs-patching_as_code/compare/v1.1.4...v1.1.5)
+**Improvements**
+- Added support for RHEL 9 in the reboot detection script.
 
-### Other
+## v1.1.4
 
-- Release 1.1.5: RHEL 9 reboot detection support [#65](https://github.com/puppetlabs/puppetlabs-patching_as_code/pull/65) ([kreeuwijk](https://github.com/kreeuwijk))
-- Add RHEL9 support to pending_reboot.sh [#64](https://github.com/puppetlabs/puppetlabs-patching_as_code/pull/64) ([jcpunk](https://github.com/jcpunk))
-- Full process detection for `unsafe_process_list` [#62](https://github.com/puppetlabs/puppetlabs-patching_as_code/pull/62) ([kreeuwijk](https://github.com/kreeuwijk))
+**Improvements**
+- Added support for matching against full process arguments for the `patching_as_code::unsafe_process_list`.
 
-## [v1.1.4](https://github.com/puppetlabs/puppetlabs-patching_as_code/tree/v1.1.4) - 2022-07-15
+## v1.1.3
 
-[Full Changelog](https://github.com/puppetlabs/puppetlabs-patching_as_code/compare/v1.1.3...v1.1.4)
+**Bugfixes**
+- No longer logs `Puppet Unknown variable: 'reboot'` on runs outside of the patch day.
 
-### Other
+**Improvements**
+- Correctly handles multi-architecture package updates, e.g. when there is an update for both the `i686` and `x86_64` version of a package.
 
-- v1.1.3: support linux updates for multiple architectures [#59](https://github.com/puppetlabs/puppetlabs-patching_as_code/pull/59) ([kreeuwijk](https://github.com/kreeuwijk))
+## v1.1.2
 
-## [v1.1.3](https://github.com/puppetlabs/puppetlabs-patching_as_code/tree/v1.1.3) - 2022-06-20
+**Bugfixes**
+- Fixes a bug that caused High Priority OS patches for Windows not to be installed, due to the wrong variable being used.
 
-[Full Changelog](https://github.com/puppetlabs/puppetlabs-patching_as_code/compare/v1.1.2...v1.1.3)
+**Improvements**
+- Deduplicates the list of installed patches on the last run, reported in the `patching_as_code` fact.
 
-### Other
+## v1.1.1
 
-- Correct the source parameter [#58](https://github.com/puppetlabs/puppetlabs-patching_as_code/pull/58) ([binford2k](https://github.com/binford2k))
-- Added the Trusted Contributor notice [#56](https://github.com/puppetlabs/puppetlabs-patching_as_code/pull/56) ([binford2k](https://github.com/binford2k))
-- v1.1.2: Fix High Priority patches not getting installed on Windows [#51](https://github.com/puppetlabs/puppetlabs-patching_as_code/pull/51) ([kreeuwijk](https://github.com/kreeuwijk))
+**Improvements**
+- Fix incorrect YAML code markers in `README.md`.
 
-## [v1.1.2](https://github.com/puppetlabs/puppetlabs-patching_as_code/tree/v1.1.2) - 2022-03-09
+## v1.1.0
 
-[Full Changelog](https://github.com/puppetlabs/puppetlabs-patching_as_code/compare/v1.1.1...v1.1.2)
+**Features**
+- Adds support for high priority patches on an alternate patch schedule.
+- Adds `high_priority_only` parameter to the `patching_as_code` class, for compatibility with the `puppetlabs/change_window` module.
 
-## [v1.1.1](https://github.com/puppetlabs/puppetlabs-patching_as_code/tree/v1.1.1) - 2022-03-07
+**Improvements**
+- Ensures the last_run fact data only gets written during the patch window.
 
-[Full Changelog](https://github.com/puppetlabs/puppetlabs-patching_as_code/compare/v1.1.0...v1.1.1)
+## v1.0.5
 
-### Other
+**Bugfixes**
+- Moves the location of the `patching_as_code` fact content to `/opt/puppetlabs/patching_as_code` (or `%ProgramData%\PuppetLabs\patching_as_code` on Windows), to remove a dependency on `pe_patch/os_patching` creating the directory where the last_run file content can be stored.
+- Fixes an incompatibility with `os_patching` that was caused by the wrong directory being assumed for the `patching_as_code` fact content when using `os_patching`.
 
-- v1.1.0: High priority patching support [#50](https://github.com/puppetlabs/puppetlabs-patching_as_code/pull/50) ([kreeuwijk](https://github.com/kreeuwijk))
+## v1.0.4
 
-## [v1.1.0](https://github.com/puppetlabs/puppetlabs-patching_as_code/tree/v1.1.0) - 2022-03-07
+**Features**
+- Added a `patching_as_code` fact that details the date & time of the last successful patch run, as well as which packages were installed.
 
-[Full Changelog](https://github.com/puppetlabs/puppetlabs-patching_as_code/compare/v1.0.5...v1.1.0)
+## v1.0.3
 
-### Other
+**Bugfixes**
+- No longer adds `Exec[Patching as Code - Clean Cache]` to the `require` metaparameter of managed Chocolatey package resources that will be patched.
 
-- v1.1.0: High priority patching support [#50](https://github.com/puppetlabs/puppetlabs-patching_as_code/pull/50) ([kreeuwijk](https://github.com/kreeuwijk))
-- v1.0.5: Use own location for `patching_as_code` fact [#49](https://github.com/puppetlabs/puppetlabs-patching_as_code/pull/49) ([kreeuwijk](https://github.com/kreeuwijk))
+## v1.0.2
 
-## [v1.0.5](https://github.com/puppetlabs/puppetlabs-patching_as_code/tree/v1.0.5) - 2022-03-01
+**Improvements**
+- Split the `allowlist` and `blacklist` to have dedicated lists for Chocolatey, with the new `allowlist_choco` and `blacklist_choco` parameters. These new parameters now must be used for Chocolatey packages, the regular `allowlist` and `blacklist` will not affect Chocolatey packages anymore.
+- Pending OS reboots will now no longer occur if `enable_patching` has been changed to `false`. This is to enable the `enable_patching` parameter being used as a single switch to ensure that no disruptive action can happen at all.
 
-[Full Changelog](https://github.com/puppetlabs/puppetlabs-patching_as_code/compare/v1.0.4...v1.0.5)
+## v1.0.1
 
-### Other
+**Bugfixes**
+- Improved processing of the `patching_as_config_choco` fact, to ensure backwards compatibility with Facter 3.
+- The `patching_as_config_choco` fact now no longer errors on a system that does not have `patching_as_config` enabled.
 
-- v1.0.5: Use own location for `patching_as_code` fact [#49](https://github.com/puppetlabs/puppetlabs-patching_as_code/pull/49) ([kreeuwijk](https://github.com/kreeuwijk))
-- v1.0.4: `patching_as_code` fact [#47](https://github.com/puppetlabs/puppetlabs-patching_as_code/pull/47) ([kreeuwijk](https://github.com/kreeuwijk))
+## v1.0.0
 
-## [v1.0.4](https://github.com/puppetlabs/puppetlabs-patching_as_code/tree/v1.0.4) - 2022-02-23
+**Features**
+- Added ability to update Chocolatey packages as part of the patching run, by setting `patch_choco => true`. Allowlist & blocklist settings will be applied to Chocolatey packages as well.
 
-[Full Changelog](https://github.com/puppetlabs/puppetlabs-patching_as_code/compare/v1.0.3...v1.0.4)
+**Improvements**
+- Enable control of behavior for automatic uploading of facts by the `pe_patch` and `os_patching` modules (contributed by @prolixalias)
+- Fix cause of deprecation message `Calling function empty() with Numeric value is deprecated` (contributed by @prolixalias)
 
-### Other
+## v0.7.11
 
-- v1.0.4: `patching_as_code` fact [#47](https://github.com/puppetlabs/puppetlabs-patching_as_code/pull/47) ([kreeuwijk](https://github.com/kreeuwijk))
+**Improvements**
+- Deduplicates the list of patches to install, preventing any possible duplicate resource declarations if the list of patches to install contains the same patch more than once for any reason
 
-## [v1.0.3](https://github.com/puppetlabs/puppetlabs-patching_as_code/tree/v1.0.3) - 2022-02-18
+## v0.7.10
 
-[Full Changelog](https://github.com/puppetlabs/puppetlabs-patching_as_code/compare/v1.0.2...v1.0.3)
+**Improvements**
+- Allow reinstalls of KB4052623 as these are also monthly AV definition updates
 
-### Other
+## v0.7.9
 
-- v1.0.2: Unique allow/block lists for Chocolatey [#45](https://github.com/puppetlabs/puppetlabs-patching_as_code/pull/45) ([kreeuwijk](https://github.com/kreeuwijk))
+**Bugfixes**
+- Correct KB2267202 to KB2267602
 
-## [v1.0.2](https://github.com/puppetlabs/puppetlabs-patching_as_code/tree/v1.0.2) - 2022-02-18
+## v0.7.8
 
-[Full Changelog](https://github.com/puppetlabs/puppetlabs-patching_as_code/compare/v1.0.1...v1.0.2)
+**Improvements**
+- Allow reinstalls of KB2267202 and KB2461484 as these are monthly AV definition updates
 
-### Other
+## v0.7.7
 
-- v1.0.2: Unique allow/block lists for Chocolatey [#45](https://github.com/puppetlabs/puppetlabs-patching_as_code/pull/45) ([kreeuwijk](https://github.com/kreeuwijk))
-- v1.0.1: Improve handling of `patching_as_code_choco` fact [#44](https://github.com/puppetlabs/puppetlabs-patching_as_code/pull/44) ([kreeuwijk](https://github.com/kreeuwijk))
+**Bugfixes**
+- Removed a dependency on the `patching_as_code_config` fact inside of the `is_patchday()` function, preventing possible catalog compilation failures as a result of the `patching_as_code_config` fact not yet existing for new agents.
 
-## [v1.0.1](https://github.com/puppetlabs/puppetlabs-patching_as_code/tree/v1.0.1) - 2022-02-17
+## v0.7.6
 
-[Full Changelog](https://github.com/puppetlabs/puppetlabs-patching_as_code/compare/v1.0.0...v1.0.1)
+**Bugfixes**
+- Account for the `patching_as_code_utc_offset` fact to be empty in some situations
 
-### Other
+## v0.7.5
 
-- v1.0.1: Improve handling of `patching_as_code_choco` fact [#44](https://github.com/puppetlabs/puppetlabs-patching_as_code/pull/44) ([kreeuwijk](https://github.com/kreeuwijk))
-- v1.0.0: Add Chocolatey support [#43](https://github.com/puppetlabs/puppetlabs-patching_as_code/pull/43) ([kreeuwijk](https://github.com/kreeuwijk))
+**Improvements**
+- Now correctly adjusts for timezone differences between the Puppet Server and the managed node, ensuring that the local node time & date gets used to calculate if today is patch day.
+- Now logs messages in the Puppet Server log to report the calculated local node time & day, as well as whether or not today is patch day for the node.
 
-## [v1.0.0](https://github.com/puppetlabs/puppetlabs-patching_as_code/tree/v1.0.0) - 2022-02-15
+## v0.7.4
 
-[Full Changelog](https://github.com/puppetlabs/puppetlabs-patching_as_code/compare/v0.7.11...v1.0.0)
+**Bugfixes**
+- Fixes a missing `schedule` metaparameter for the `Notify[Patching as Code - Update Fact]`, which would cause the `pe_patch` fact to update at every Puppet run during the patch day, instead of only during the maintenance window.
 
-### Other
+## v0.7.3
 
-- v1.0.0: Add Chocolatey support [#43](https://github.com/puppetlabs/puppetlabs-patching_as_code/pull/43) ([kreeuwijk](https://github.com/kreeuwijk))
-- work around deprecation message [#42](https://github.com/puppetlabs/puppetlabs-patching_as_code/pull/42) ([prolixalias](https://github.com/prolixalias))
-- backward-compatible disabling of os_patching's fact_upload [#41](https://github.com/puppetlabs/puppetlabs-patching_as_code/pull/41) ([prolixalias](https://github.com/prolixalias))
-- v0.7.11: Fix issues caused by duplicate items in list of patches [#40](https://github.com/puppetlabs/puppetlabs-patching_as_code/pull/40) ([kreeuwijk](https://github.com/kreeuwijk))
+**Bugfixes**
+- Correctly handles package declarations where the title of the package resource does not match the name of the package.
 
-## [v0.7.11](https://github.com/puppetlabs/puppetlabs-patching_as_code/tree/v0.7.11) - 2021-12-03
+## v0.7.2
 
-[Full Changelog](https://github.com/puppetlabs/puppetlabs-patching_as_code/compare/v0.7.10...v0.7.11)
+**Improvements**
+- The pre-patch reboot in case of any pending reboots now happens also if it is patchday but there are no patches to install. This facilitates parallel patching tools to have installed patches before Puppet's patch window, with Puppet performing the actual reboot.
 
-### Other
+## v0.7.1
 
-- v0.7.11: Fix issues caused by duplicate items in list of patches [#40](https://github.com/puppetlabs/puppetlabs-patching_as_code/pull/40) ([kreeuwijk](https://github.com/kreeuwijk))
+**Improvements**
+- Adopted the `eval_generate` function in the `patch_package` type to ensure that newly generated `package` resources become children of the `patching_as_code::linux::patchday` class. This provides better context for these package resources, which can be leveraged in external reporting tools (e.g. Splunk).
+- Simplified the `patch_package` type, removed capabilities that are no longer needed
+- Moved the logic to trigger the patch fact refresh to the main manifest
+- Simplified the patchday classes
 
-## [v0.7.10](https://github.com/puppetlabs/puppetlabs-patching_as_code/tree/v0.7.10) - 2021-11-15
+## v0.7.0
 
-[Full Changelog](https://github.com/puppetlabs/puppetlabs-patching_as_code/compare/v0.7.9...v0.7.10)
+**Features**
+- Moves the post-patch reboot logic to its own stage (`patch_reboot`), which runs after the `main` stage. This should ensure that reboots only happen at the end of the Puppet run.
+- Removed the `notify` logic for triggering the reboots from installed patches, in favor of handling the reboot logic in the new `patch_reboot` stage.
+- Deduplicated the calling of the Exec resource that refreshes the patch fact, ensuring this only happens once now.
 
-### Other
+## v0.6.2
 
-- Update to allow for Windows 10 Monthly updates [#38](https://github.com/puppetlabs/puppetlabs-patching_as_code/pull/38) ([robkae](https://github.com/robkae))
+**Features**
+- Adds support for setting the value `Any` to the `day_of_week` parameter in a patch schedule
 
-## [v0.7.9](https://github.com/puppetlabs/puppetlabs-patching_as_code/tree/v0.7.9) - 2021-11-11
+## v0.6.1
 
-[Full Changelog](https://github.com/puppetlabs/puppetlabs-patching_as_code/compare/v0.7.8...v0.7.9)
+**Bugfixes**
+- Removed the `weekday` attribute of the `schedule` resource that this module uses internally to restrict when patches can be applied. In certain edge cases where the Puppet server is in a very different timezone from a managed node, there can be a 1 day date difference between the two systems. This creates a scenario where the node never receives a valid patch schedule. By removing the `weekday` parameter from the `schedule` resource, this can no longer occur. Other logic still protects the actual day on which the patching is allowed so this parameter wasn't necessary.
 
-### Other
+## v0.6.0
 
-- puppet call ref : 46438 should be KB2267602 [#37](https://github.com/puppetlabs/puppetlabs-patching_as_code/pull/37) ([robkae](https://github.com/robkae))
+**Features**
+- Adds support for providing an array of values to the `patch_group` attribute of the `patching_as_code` class
+- Adds support for providing an array of values to the `count_of_week` parameter in a patch schedule
 
-## [v0.7.8](https://github.com/puppetlabs/puppetlabs-patching_as_code/tree/v0.7.8) - 2021-11-11
+## v0.5.0
 
-[Full Changelog](https://github.com/puppetlabs/puppetlabs-patching_as_code/compare/v0.7.7...v0.7.8)
+**Features**
+- Removes dependency on the `windows_updates` module, we can now install Windows Updates natively
+- Adds a Task to install a Windows Update over WinRM or PCP
+- Updates the PDK to 2.0.0
+- No longer fails the resource if the Windows Update is no longer available/applicable for the node
+- Write a `patching_as_code_config` fact that reports configuration state
+- Support security-only patching via a new `security_only` parameter to the class. This works for Linux today, but requires a not-yet shipped update to `pe_patch` for Windows
+- Preparations for being able to run `patching_as_code` as a plan, not yet active.
 
-## [v0.7.7](https://github.com/puppetlabs/puppetlabs-patching_as_code/tree/v0.7.7) - 2021-09-07
+## v0.4.3
 
-[Full Changelog](https://github.com/puppetlabs/puppetlabs-patching_as_code/compare/v0.7.6...v0.7.7)
+**Bugfixes**
+- Ensure `yum-utils` package on all RedHat/CentOS versions, not just 8
+- Use `ensure_packages()` for safer enforcement of `yum-utils` package
 
-## [v0.7.6](https://github.com/puppetlabs/puppetlabs-patching_as_code/tree/v0.7.6) - 2021-08-25
+## v0.4.2
 
-[Full Changelog](https://github.com/puppetlabs/puppetlabs-patching_as_code/compare/v0.7.5...v0.7.6)
+**Bugfixes**
+- Account for `$facts['operatingsystemmajrelease']` returning a string instead of an integer
 
-### Other
+## v0.4.1
 
-- v0.7.5: better timezone support [#35](https://github.com/puppetlabs/puppetlabs-patching_as_code/pull/35) ([kreeuwijk](https://github.com/kreeuwijk))
+**Bugfixes**
+- For parsing the result of `/usr/bin/needs-restarting -r` in CentOS 7/8, the script was `if [ $? -eq 0 ]` instead of `if [ $? -eq 1 ]`, which caused the logic to be flipped.
 
-## [v0.7.5](https://github.com/puppetlabs/puppetlabs-patching_as_code/tree/v0.7.5) - 2021-08-25
+## v0.4.0
 
-[Full Changelog](https://github.com/puppetlabs/puppetlabs-patching_as_code/compare/v0.7.4...v0.7.5)
+**Features**
+- Completely rewrote the reboot behavior, so that pending reboot detections fully works both before patching and after patching, in the same Puppet run. There is no more dependency on the `reboots.reboot_required` portion of the `pe_patch`/`os_patching` fact, all logic is now internal and no longer requires multiple Puppet runs.
+- Changed the default schedules to `reboot: ifneeded` (was `reboot: always`), now that the pending reboot logic has improved so much
+- Ensured that pre_reboot commands will now trigger when necessary (only one scenario can happen at a time):
+  - when an OS pending reboot is detected at the start of a run (before patching)
+  - when an OS pending reboot is detected at the end of a run (after patching)
+- Forced pre_reboot commands (which are essentially Exec resources) to use the `posix` provider on Linux and the `powershell` provider on Windows, so that the pending reboot detection logic can be injected to the resource dynamically.
 
-### Other
+## v0.3.0
 
-- v0.7.4: schedule fix in Notify resource [#34](https://github.com/puppetlabs/puppetlabs-patching_as_code/pull/34) ([kreeuwijk](https://github.com/kreeuwijk))
+**Features**
+- Rewrote updating of Linux packages to use a custom type (`patch_package`), which dynamically updates and/or creates `package` resources for patching in the catalog on the agent side. This ensures no duplicate package declarations can occur on the server side, due to the parsing-order dependency of `defined()` and `defined_with_params()`. Neither of these functions are used anymore.
 
-## [v0.7.4](https://github.com/puppetlabs/puppetlabs-patching_as_code/tree/v0.7.4) - 2021-08-20
+## v0.2.9
 
-[Full Changelog](https://github.com/puppetlabs/puppetlabs-patching_as_code/compare/v0.7.3...v0.7.4)
+**Bugfixes**
+- Also protect against duplicate package declarations when `ensure` is set to a version. This isn't 100% bulletproof as the check is parse-order-dependent, but will work in most cases.
 
-### Other
+## v0.2.8
 
-- v0.7.4: schedule fix in Notify resource [#34](https://github.com/puppetlabs/puppetlabs-patching_as_code/pull/34) ([kreeuwijk](https://github.com/kreeuwijk))
-- v0.7.3: Custom resource title support [#33](https://github.com/puppetlabs/puppetlabs-patching_as_code/pull/33) ([kreeuwijk](https://github.com/kreeuwijk))
+**Bugfixes**
+- Ensured Linux patches cannot cause duplicate declarations
 
-## [v0.7.3](https://github.com/puppetlabs/puppetlabs-patching_as_code/tree/v0.7.3) - 2021-08-19
+## v0.2.7
 
-[Full Changelog](https://github.com/puppetlabs/puppetlabs-patching_as_code/compare/v0.7.2...v0.7.3)
+**Bugfixes**
+- Added dependency to `puppetlabs/puppet_agent` to the module's metadata
 
-### Other
+## v0.2.6
 
-- v0.7.3: Custom resource title support [#33](https://github.com/puppetlabs/puppetlabs-patching_as_code/pull/33) ([kreeuwijk](https://github.com/kreeuwijk))
-- v0.7.2 - Allow reboots when pending on patch day [#31](https://github.com/puppetlabs/puppetlabs-patching_as_code/pull/31) ([kreeuwijk](https://github.com/kreeuwijk))
+**Features**
+- Added a `patch_unsafe_process_active` custom fact that reflects if any process from the `unsafe_process_list` parameter was found active on the system.
+- Added a `unsafe_process_list` parameter to the `patching_as_code` class, which defines processes for the system that must cause patching to be skipped if any of those processes are active. Defaults to an empty array.
 
-## [v0.7.2](https://github.com/puppetlabs/puppetlabs-patching_as_code/tree/v0.7.2) - 2021-07-21
+## v0.2.5
 
-[Full Changelog](https://github.com/puppetlabs/puppetlabs-patching_as_code/compare/v0.7.1...v0.7.2)
+**Features**
+- Added cache cleanup for other providers (dnf, apt, zypper)
+- Added refresh of `pe_patch::fact::exec` / `os_patching::fact::exec` resources, to auto-update patch state after patching. This prevents unneccesary patching runs that perform no updates
 
-### Other
+**Bugfixes**
+- Increased reboot delay after patching from 1 to 5 minutes, to account for remaining activities in the Puppet run
 
-- v0.7.2 - Allow reboots when pending on patch day [#31](https://github.com/puppetlabs/puppetlabs-patching_as_code/pull/31) ([kreeuwijk](https://github.com/kreeuwijk))
-- v0.7.1 - code improvements (#28) [#30](https://github.com/puppetlabs/puppetlabs-patching_as_code/pull/30) ([kreeuwijk](https://github.com/kreeuwijk))
-- v0.7.1 - code improvements [#28](https://github.com/puppetlabs/puppetlabs-patching_as_code/pull/28) ([kreeuwijk](https://github.com/kreeuwijk))
+## v0.2.4
 
-## [v0.7.1](https://github.com/puppetlabs/puppetlabs-patching_as_code/tree/v0.7.1) - 2021-06-25
+**Bugfixes**
+- Fixes the datatype of the `metered_link` fact, this was expected to be Boolean but got reported as a String, causing the logic to break.
 
-[Full Changelog](https://github.com/puppetlabs/puppetlabs-patching_as_code/compare/v0.7.0...v0.7.1)
+## v0.2.3
 
-### Other
+**Features**
+- Added a `metered_link` custom fact that detects metered network connections on Windows
+- Added a `patch_on_metered_links` parameter to the `patching_as_code` class, which controls if patches are installed when running over a metered link (Windows only). Defaults to `false`.
 
-- v0.7.1 - code improvements [#28](https://github.com/puppetlabs/puppetlabs-patching_as_code/pull/28) ([kreeuwijk](https://github.com/kreeuwijk))
-- Move post-patch reboot logic to its own stage that runs after [main] [#27](https://github.com/puppetlabs/puppetlabs-patching_as_code/pull/27) ([kreeuwijk](https://github.com/kreeuwijk))
+## v0.2.2
 
-## [v0.7.0](https://github.com/puppetlabs/puppetlabs-patching_as_code/tree/v0.7.0) - 2021-06-22
+**Features**
+- This update ensures that patching_as_code defaults to NOT classify the pe_patch class on PE 2019.8.0, so that you can use the builtin "PE Patch Management" node group(s) to classify pe_patch. Since UI will be further improved in PE for this, it makes sense that this would be the leading way to classify pe_patch. This module can still be given control over pe_patch, as described in the updated Readme.
+- The blacklist and whitelist have been renamed to blocklist and allowlist.
+- Documentation has been updated, with a reference for the main manifest.
 
-[Full Changelog](https://github.com/puppetlabs/puppetlabs-patching_as_code/compare/v0.6.2...v0.7.0)
+## v0.2.1
 
-### Other
+**Bugfixes**
+Ensure pre/post-patching & pre-reboot commands use the same schedule
 
-- Move post-patch reboot logic to its own stage that runs after [main] [#27](https://github.com/puppetlabs/puppetlabs-patching_as_code/pull/27) ([kreeuwijk](https://github.com/kreeuwijk))
-- Update boundaries for powershell [#24](https://github.com/puppetlabs/puppetlabs-patching_as_code/pull/24) ([PolaricEntropy](https://github.com/PolaricEntropy))
-- v0.6.2 - Support daily schedule [#23](https://github.com/puppetlabs/puppetlabs-patching_as_code/pull/23) ([kreeuwijk](https://github.com/kreeuwijk))
+## v0.2.0
 
-## [v0.6.2](https://github.com/puppetlabs/puppetlabs-patching_as_code/tree/v0.6.2) - 2021-04-30
+Fixes pending reboot logic, adds pre/post-patching & pre-reboot command support
 
-[Full Changelog](https://github.com/puppetlabs/puppetlabs-patching_as_code/compare/v0.6.1...v0.6.2)
+**Features**
+- Ensures pending reboots are handled correctly, skipping patch installs completely
+- Allows defining `Exec` resources dynamically for pre/post-patching & pre-reboot commands
+- Refactors reboot logic into main manifest
 
-### Other
+**Known Issues**
+Tested on Windows 2016 and 2019, and CentOS 7
 
-- v0.6.1 - Fix wide timezone difference case [#22](https://github.com/puppetlabs/puppetlabs-patching_as_code/pull/22) ([kreeuwijk](https://github.com/kreeuwijk))
+## v0.1.0
 
-## [v0.6.1](https://github.com/puppetlabs/puppetlabs-patching_as_code/tree/v0.6.1) - 2021-04-19
+Initial release
 
-[Full Changelog](https://github.com/puppetlabs/puppetlabs-patching_as_code/compare/v0.6.0...v0.6.1)
+**Features**
+- Integrates with `albatrossflavour/os_patching` and `puppetlabs/pe_patch`
+- Customizable patch windows
+- Patch window based on Nth weekday in the month
+- Reboot control
+- Yum clean support
 
-### Other
+**Known Issues**
+Tested on Windows 2016 and 2019, and CentOS 7
 
-- v0.6.0 - patch_group and scheduling improvements [#21](https://github.com/puppetlabs/puppetlabs-patching_as_code/pull/21) ([kreeuwijk](https://github.com/kreeuwijk))
 
-## [v0.6.0](https://github.com/puppetlabs/puppetlabs-patching_as_code/tree/v0.6.0) - 2021-04-16
-
-[Full Changelog](https://github.com/puppetlabs/puppetlabs-patching_as_code/compare/v0.5.0...v0.6.0)
-
-### Other
-
-- Update branch with 0.5.0 changes [#20](https://github.com/puppetlabs/puppetlabs-patching_as_code/pull/20) ([kreeuwijk](https://github.com/kreeuwijk))
-- Version 0.5.0 - Native Windows Update support [#19](https://github.com/puppetlabs/puppetlabs-patching_as_code/pull/19) ([kreeuwijk](https://github.com/kreeuwijk))
-
-## [v0.5.0](https://github.com/puppetlabs/puppetlabs-patching_as_code/tree/v0.5.0) - 2021-04-09
-
-[Full Changelog](https://github.com/puppetlabs/puppetlabs-patching_as_code/compare/v0.4.3...v0.5.0)
-
-### Other
-
-- win_update feature [#18](https://github.com/puppetlabs/puppetlabs-patching_as_code/pull/18) ([](https://github.com/))
-
-## [v0.4.3](https://github.com/puppetlabs/puppetlabs-patching_as_code/tree/v0.4.3) - 2021-02-09
-
-[Full Changelog](https://github.com/puppetlabs/puppetlabs-patching_as_code/compare/v0.4.2...v0.4.3)
-
-## [v0.4.2](https://github.com/puppetlabs/puppetlabs-patching_as_code/tree/v0.4.2) - 2021-02-09
-
-[Full Changelog](https://github.com/puppetlabs/puppetlabs-patching_as_code/compare/v0.4.1...v0.4.2)
-
-## [v0.4.1](https://github.com/puppetlabs/puppetlabs-patching_as_code/tree/v0.4.1) - 2021-02-09
-
-[Full Changelog](https://github.com/puppetlabs/puppetlabs-patching_as_code/compare/v0.4.0...v0.4.1)
-
-### Other
-
-- v0.4.0 - Rewrote reboot behavior [#14](https://github.com/puppetlabs/puppetlabs-patching_as_code/pull/14) ([kreeuwijk](https://github.com/kreeuwijk))
-
-## [v0.4.0](https://github.com/puppetlabs/puppetlabs-patching_as_code/tree/v0.4.0) - 2021-02-04
-
-[Full Changelog](https://github.com/puppetlabs/puppetlabs-patching_as_code/compare/v0.3.0...v0.4.0)
-
-## [v0.3.0](https://github.com/puppetlabs/puppetlabs-patching_as_code/tree/v0.3.0) - 2021-01-20
-
-[Full Changelog](https://github.com/puppetlabs/puppetlabs-patching_as_code/compare/v0.2.9...v0.3.0)
-
-### Other
-
-- Version 0.3.0 - Custom type to prevent duplicate package declarations [#13](https://github.com/puppetlabs/puppetlabs-patching_as_code/pull/13) ([kreeuwijk](https://github.com/kreeuwijk))
-- Support existing package declarations that specify a version [#12](https://github.com/puppetlabs/puppetlabs-patching_as_code/pull/12) ([kreeuwijk](https://github.com/kreeuwijk))
-
-## [v0.2.9](https://github.com/puppetlabs/puppetlabs-patching_as_code/tree/v0.2.9) - 2021-01-15
-
-[Full Changelog](https://github.com/puppetlabs/puppetlabs-patching_as_code/compare/v0.2.8...v0.2.9)
-
-### Other
-
-- Support existing package declarations that specify a version [#12](https://github.com/puppetlabs/puppetlabs-patching_as_code/pull/12) ([kreeuwijk](https://github.com/kreeuwijk))
-- Fix risk of duplicate declarations [#11](https://github.com/puppetlabs/puppetlabs-patching_as_code/pull/11) ([kreeuwijk](https://github.com/kreeuwijk))
-
-## [v0.2.8](https://github.com/puppetlabs/puppetlabs-patching_as_code/tree/v0.2.8) - 2021-01-15
-
-[Full Changelog](https://github.com/puppetlabs/puppetlabs-patching_as_code/compare/v0.2.7...v0.2.8)
-
-## [v0.2.7](https://github.com/puppetlabs/puppetlabs-patching_as_code/tree/v0.2.7) - 2020-12-16
-
-[Full Changelog](https://github.com/puppetlabs/puppetlabs-patching_as_code/compare/v0.2.6...v0.2.7)
-
-### Other
-
-- v0.2.6 - skip patching if an unsafe process is active [#9](https://github.com/puppetlabs/puppetlabs-patching_as_code/pull/9) ([kreeuwijk](https://github.com/kreeuwijk))
-
-## [v0.2.6](https://github.com/puppetlabs/puppetlabs-patching_as_code/tree/v0.2.6) - 2020-12-15
-
-[Full Changelog](https://github.com/puppetlabs/puppetlabs-patching_as_code/compare/v0.2.5...v0.2.6)
-
-### Other
-
-- Clean pkg mgr cache for more providers, notify patch fact update [#8](https://github.com/puppetlabs/puppetlabs-patching_as_code/pull/8) ([kreeuwijk](https://github.com/kreeuwijk))
-
-## [v0.2.5](https://github.com/puppetlabs/puppetlabs-patching_as_code/tree/v0.2.5) - 2020-12-02
-
-[Full Changelog](https://github.com/puppetlabs/puppetlabs-patching_as_code/compare/v0.2.4...v0.2.5)
-
-### Other
-
-- Version 0.2.4: fix datatype of metered_link fact [#6](https://github.com/puppetlabs/puppetlabs-patching_as_code/pull/6) ([kreeuwijk](https://github.com/kreeuwijk))
-
-## [v0.2.4](https://github.com/puppetlabs/puppetlabs-patching_as_code/tree/v0.2.4) - 2020-11-06
-
-[Full Changelog](https://github.com/puppetlabs/puppetlabs-patching_as_code/compare/v0.2.3...v0.2.4)
-
-### Other
-
-- Add control for metered links [#5](https://github.com/puppetlabs/puppetlabs-patching_as_code/pull/5) ([kreeuwijk](https://github.com/kreeuwijk))
-
-## [v0.2.3](https://github.com/puppetlabs/puppetlabs-patching_as_code/tree/v0.2.3) - 2020-10-23
-
-[Full Changelog](https://github.com/puppetlabs/puppetlabs-patching_as_code/compare/v0.2.2...v0.2.3)
-
-### Other
-
-- Update to Release 0.2.2 [#4](https://github.com/puppetlabs/puppetlabs-patching_as_code/pull/4) ([kreeuwijk](https://github.com/kreeuwijk))
-
-## [v0.2.2](https://github.com/puppetlabs/puppetlabs-patching_as_code/tree/v0.2.2) - 2020-08-25
-
-[Full Changelog](https://github.com/puppetlabs/puppetlabs-patching_as_code/compare/v0.2.1...v0.2.2)
-
-### Other
-
-- Release preparation for 0.2.2 [#3](https://github.com/puppetlabs/puppetlabs-patching_as_code/pull/3) ([kreeuwijk](https://github.com/kreeuwijk))
-- Ensure no duplicate declarations happen with pe_patch [#2](https://github.com/puppetlabs/puppetlabs-patching_as_code/pull/2) ([kreeuwijk](https://github.com/kreeuwijk))
-
-## [v0.2.1](https://github.com/puppetlabs/puppetlabs-patching_as_code/tree/v0.2.1) - 2020-07-17
-
-[Full Changelog](https://github.com/puppetlabs/puppetlabs-patching_as_code/compare/v0.2.0...v0.2.1)
-
-### Other
-
-- Pre post reboot control [#1](https://github.com/puppetlabs/puppetlabs-patching_as_code/pull/1) ([kreeuwijk](https://github.com/kreeuwijk))
-
-## [v0.2.0](https://github.com/puppetlabs/puppetlabs-patching_as_code/tree/v0.2.0) - 2020-07-16
-
-[Full Changelog](https://github.com/puppetlabs/puppetlabs-patching_as_code/compare/v0.1.0...v0.2.0)
-
-## [v0.1.0](https://github.com/puppetlabs/puppetlabs-patching_as_code/tree/v0.1.0) - 2020-07-13
-
-[Full Changelog](https://github.com/puppetlabs/puppetlabs-patching_as_code/compare/362a69bc9957c1b539011eafbe2d3c725fdf8328...v0.1.0)
+\* *This Changelog was automatically generated by [github_changelog_generator](https://github.com/github-changelog-generator/github-changelog-generator)*

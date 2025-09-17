@@ -1,12 +1,12 @@
 {
-  "name": "puppetlabs-patching_as_code",
-  "version": "2.0.1",
-  "author": "puppetlabs",
+  "name": "puppet-patching_as_code",
+  "version": "3.0.0",
+  "author": "Vox Pupuli",
   "summary": "Automated patching through desired state code",
   "license": "Apache-2.0",
-  "source": "https://github.com/puppetlabs/puppetlabs-patching_as_code",
-  "project_page": "https://github.com/puppetlabs/puppetlabs-patching_as_code",
-  "issues_url": "https://github.com/puppetlabs/puppetlabs-patching_as_code/issues",
+  "source": "https://github.com/voxpupuli/puppetlabs-patching_as_code",
+  "project_page": "https://github.com/voxpupuli/puppetlabs-patching_as_code",
+  "issues_url": "https://github.com/voxpupuli/puppetlabs-patching_as_code/issues",
   "dependencies": [
     {
       "name": "puppetlabs/powershell",

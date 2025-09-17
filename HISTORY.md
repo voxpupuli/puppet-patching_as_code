@@ -1,6 +1,55 @@
-# Changelog
+## [v2.0.1](https://github.com/voxpupuli/puppet-patching_as_code/tree/v2.0.1) - (2025-02-07)
 
-All notable changes to this project will be documented in this file.
+[Full Changelog](https://github.com/voxpupuli/puppet-patching_as_code/compare/v2.0.0...v2.0.1)
+
+### Other
+
+- logic error and wrong kernel fact result [#110](https://github.com/voxpupuli/puppet-patching_as_code/pull/110) ([spotter-puppet](https://github.com/spotter-puppet))
+
+## [v2.0.0](https://github.com/voxpupuli/puppet-patching_as_code/tree/v2.0.0) - 2024-08-29
+
+[Full Changelog](https://github.com/voxpupuli/puppet-patching_as_code/compare/v1.1.9...v2.0.0)
+
+### Other
+
+- fix dates [#104](https://github.com/voxpupuli/puppet-patching_as_code/pull/104) ([spotter-puppet](https://github.com/spotter-puppet))
+- V2.0.0 [#103](https://github.com/voxpupuli/puppet-patching_as_code/pull/103) ([spotter-puppet](https://github.com/spotter-puppet))
+- V1.1.8 [#100](https://github.com/voxpupuli/puppet-patching_as_code/pull/100) ([spotter-puppet](https://github.com/spotter-puppet))
+
+## [v1.1.9](https://github.com/voxpupuli/puppet-patching_as_code/tree/v1.1.9) - 2024-08-28
+
+[Full Changelog](https://github.com/voxpupuli/puppet-patching_as_code/compare/v1.1.7...v1.1.9)
+
+### Fixed
+
+- Fix unsafe process list [#89](https://github.com/voxpupuli/puppet-patching_as_code/pull/89) ([kreeuwijk](https://github.com/kreeuwijk))
+
+### Other
+
+- V1.1.8 [#100](https://github.com/voxpupuli/puppet-patching_as_code/pull/100) ([spotter-puppet](https://github.com/spotter-puppet))
+-  Powershell scripts should be executed with the -NoProfile parameter [#96](https://github.com/voxpupuli/puppet-patching_as_code/pull/96) ([elfranne](https://github.com/elfranne))
+- Exclude 'patching_as_code' fact from running on Darwin systems [#93](https://github.com/voxpupuli/puppet-patching_as_code/pull/93) ([kennyb-222](https://github.com/kennyb-222))
+- Pdk release prep fix fix [#92](https://github.com/voxpupuli/puppet-patching_as_code/pull/92) ([kreeuwijk](https://github.com/kreeuwijk))
+- fix PDK Release Prep action step [#91](https://github.com/voxpupuli/puppet-patching_as_code/pull/91) ([kreeuwijk](https://github.com/kreeuwijk))
+- remove travis [#87](https://github.com/voxpupuli/puppet-patching_as_code/pull/87) ([binford2k](https://github.com/binford2k))
+
+## [v1.1.7](https://github.com/voxpupuli/puppet-patching_as_code/tree/v1.1.7) - 2022-11-01
+
+[Full Changelog](https://github.com/voxpupuli/puppet-patching_as_code/compare/v1.1.6...v1.1.7)
+
+### Fixed
+
+- Release 1.1.7: More robust reboot check and update docs [#79](https://github.com/voxpupuli/puppet-patching_as_code/pull/79) ([kreeuwijk](https://github.com/kreeuwijk))
+
+## [v1.1.6](https://github.com/voxpupuli/puppet-patching_as_code/tree/v1.1.6) - 2022-09-28
+
+[Full Changelog](https://github.com/voxpupuli/puppet-patching_as_code/compare/v1.1.5...v1.1.6)
+
+### Fixed
+
+- fix release versions to match tags [#74](https://github.com/voxpupuli/puppet-patching_as_code/pull/74) ([binford2k](https://github.com/binford2k))
+- improved logic for pre_reboot_commands [#73](https://github.com/voxpupuli/puppet-patching_as_code/pull/73) ([kreeuwijk](https://github.com/kreeuwijk))
+- setting up history for auto changelog generation [#72](https://github.com/voxpupuli/puppet-patching_as_code/pull/72) ([binford2k](https://github.com/binford2k))
 
 ## v1.1.5
 
