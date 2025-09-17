@@ -28,7 +28,7 @@ These should not affect the functionality of the module.
 - fix syntax error by jcpunk [\#122](https://github.com/voxpupuli/puppet-patching_as_code/pull/122) ([spotter-puppet](https://github.com/spotter-puppet))
 - prepare for migration to Vox Pupuli [\#113](https://github.com/voxpupuli/puppet-patching_as_code/pull/113) ([spotter-puppet](https://github.com/spotter-puppet))
 
-## [v2.0.1](https://github.com/voxpupuli/puppet-patching_as_code/tree/v2.0.1) (2025-02-07)
+## [v2.0.1](https://github.com/voxpupuli/puppet-patching_as_code/tree/v2.0.1) - (2025-02-07)
 
 [Full Changelog](https://github.com/voxpupuli/puppet-patching_as_code/compare/v2.0.0...v2.0.1)
 
@@ -81,7 +81,7 @@ These should not affect the functionality of the module.
 - improved logic for pre_reboot_commands [#73](https://github.com/voxpupuli/puppet-patching_as_code/pull/73) ([kreeuwijk](https://github.com/kreeuwijk))
 - setting up history for auto changelog generation [#72](https://github.com/voxpupuli/puppet-patching_as_code/pull/72) ([binford2k](https://github.com/binford2k))
 
-## [v1.1.5](https://github.com/voxpupuli/puppet-patching_as_code/tree/v1.1.5) - 2022-09-28
+## v1.1.5
 
 **Improvements**
 - Added support for RHEL 9 in the reboot detection script.
@@ -116,7 +116,7 @@ These should not affect the functionality of the module.
 
 **Features**
 - Adds support for high priority patches on an alternate patch schedule.
-- Adds `high_priority_only` parameter to the `patching_as_code` class, for compatibility with the `voxpupuli/change_window` module.
+- Adds `high_priority_only` parameter to the `patching_as_code` class, for compatibility with the `puppetlabs/change_window` module.
 
 **Improvements**
 - Ensures the last_run fact data only gets written during the patch window.
@@ -124,7 +124,7 @@ These should not affect the functionality of the module.
 ## v1.0.5
 
 **Bugfixes**
-- Moves the location of the `patching_as_code` fact content to `/opt/voxpupuli/patching_as_code` (or `%ProgramData%\PuppetLabs\patching_as_code` on Windows), to remove a dependency on `pe_patch/os_patching` creating the directory where the last_run file content can be stored.
+- Moves the location of the `patching_as_code` fact content to `/opt/puppetlabs/patching_as_code` (or `%ProgramData%\PuppetLabs\patching_as_code` on Windows), to remove a dependency on `pe_patch/os_patching` creating the directory where the last_run file content can be stored.
 - Fixes an incompatibility with `os_patching` that was caused by the wrong directory being assumed for the `patching_as_code` fact content when using `os_patching`.
 
 ## v1.0.4
@@ -295,7 +295,7 @@ These should not affect the functionality of the module.
 ## v0.2.7
 
 **Bugfixes**
-- Added dependency to `voxpupuli/puppet_agent` to the module's metadata
+- Added dependency to `puppetlabs/puppet_agent` to the module's metadata
 
 ## v0.2.6
 
@@ -352,7 +352,7 @@ Tested on Windows 2016 and 2019, and CentOS 7
 Initial release
 
 **Features**
-- Integrates with `albatrossflavour/os_patching` and `voxpupuli/pe_patch`
+- Integrates with `albatrossflavour/os_patching` and `puppetlabs/pe_patch`
 - Customizable patch windows
 - Patch window based on Nth weekday in the month
 - Reboot control
