@@ -152,9 +152,9 @@ class patching_as_code (
   }
 
   # Verify the puppet_confdir is present
-  if len($facts['puppet_confdir']) > 0 {
+  if length($facts['puppet_confdir']) > 0 {
     $puppet_confdir = $facts['puppet_confdir']
-  } elsif len($facts['extlib__puppet_config']['confdir']) > 0 {
+  } elsif length($facts['extlib__puppet_config']['confdir']) > 0 {
     $puppet_confdir = $facts['extlib__puppet_config']['confdir']
   } else {
     fail('The puppetlabs/patching_as_code module depends on the puppetlabs/puppet_agent module or puppet/extlib, please add one to your setup!')
