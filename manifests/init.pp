@@ -1,19 +1,19 @@
 # @summary
 #   Framework for patch management as code. Works alongside the puppetlabs/pe_patch or albatrossflavour/os_patching modules
-# 
+#
 # @example Using the module with defaults, or controlling options through Hiera
 #   include patching_as_code
-# 
+#
 # @example Forcing the classification of pe_patch on PE 2019.8.0+
 #   class {'patching_as_code':
 #     classify_pe_patch => true
 #   }
-# 
+#
 # @example Forcing the use of albatrossflavour/os_patching on PE 2019.8.0+
 #   class {'patching_as_code':
 #     use_pe_patch => false
 #   }
-# 
+#
 # @param Variant[String,Array[String]] patch_group
 #   Name(s) of the patch_group(s) for this node. Must match one or more of the patch groups in $patch_schedule
 #   To assign multiple patch groups, provide this parameter as an array
@@ -107,7 +107,7 @@
 #   When disabled (default), patches are not installed over a metered link.
 # @param [Optional[String]] plan_patch_fact
 #   Reserved parameter for running `patching_as_code` via a Plan (future functionality).
-# 
+#
 class patching_as_code (
   Variant[String,Array[String]] $patch_group, #lint:ignore:parameter_documentation
   Hash                          $patch_schedule,
@@ -231,32 +231,35 @@ class patching_as_code (
   file { 'patching_configuration.json':
     ensure    => file,
     path      => "${facts['puppet_vardir']}/../../facter/facts.d/patching_configuration.json",
-    content   => to_json_pretty( { # lint:ignore:manifest_whitespace_opening_brace_before
-      patching_as_code_config => {
-        allowlist                 => $allowlist,
-        blocklist                 => $blocklist,
-        high_priority_list        => $high_priority_list,
-        allowlist_choco           => $allowlist_choco,
-        blocklist_choco           => $blocklist_choco,
-        high_priority_list_choco  => $high_priority_list_choco,
-        enable_patching           => $enable_patching,
-        patch_fact                => $patch_fact,
-        patch_group               => $patch_groups,
-        patch_schedule            => if $active_pg in ['always', 'never'] {
-          { $active_pg => 'N/A' }
-        } else {
-          $patch_schedule.filter |$item| { $item[0] in $patch_groups }
+    content   => to_json_pretty(
+      {
+        patching_as_code_config => {
+          allowlist                 => $allowlist,
+          blocklist                 => $blocklist,
+          high_priority_list        => $high_priority_list,
+          allowlist_choco           => $allowlist_choco,
+          blocklist_choco           => $blocklist_choco,
+          high_priority_list_choco  => $high_priority_list_choco,
+          enable_patching           => $enable_patching,
+          patch_fact                => $patch_fact,
+          patch_group               => $patch_groups,
+          patch_schedule            => if $active_pg in ['always', 'never'] {
+            { $active_pg => 'N/A' }
+          } else {
+            $patch_schedule.filter |$item| { $item[0] in $patch_groups }
+          },
+          high_priority_patch_group => $high_priority_patch_group,
+          post_patch_commands       => $post_patch_commands,
+          pre_patch_commands        => $pre_patch_commands,
+          pre_reboot_commands       => $pre_reboot_commands,
+          patch_on_metered_links    => $patch_on_metered_links,
+          security_only             => $security_only,
+          patch_choco               => $patch_choco,
+          unsafe_process_list       => $unsafe_process_list,
         },
-        high_priority_patch_group => $high_priority_patch_group,
-        post_patch_commands       => $post_patch_commands,
-        pre_patch_commands        => $pre_patch_commands,
-        pre_reboot_commands       => $pre_reboot_commands,
-        patch_on_metered_links    => $patch_on_metered_links,
-        security_only             => $security_only,
-        patch_choco               => $patch_choco,
-        unsafe_process_list       => $unsafe_process_list,
       },
-    }, false),
+      false,
+    ),
     show_diff => false,
   }
 
@@ -434,7 +437,7 @@ class patching_as_code (
             # Run pre-patch commands if provided
             if ($updates_to_install.count + $choco_updates_to_install.count > 0) {
               $pre_patch_commands.each | $cmd, $cmd_opts | {
-                exec { "Patching as Code - Before patching - ${cmd}":
+                exec { "Patching as Code - Before patching - ${cmd}": # lint:ignore:exec_idempotency
                   *        => delete($cmd_opts, ['before', 'schedule', 'tag']),
                   before   => Class["patching_as_code::${0}::patchday"],
                   schedule => 'Patching as Code - Patch Window',
@@ -444,7 +447,7 @@ class patching_as_code (
             }
             if ($high_prio_updates_to_install.count + $high_prio_choco_updates_to_install.count > 0) {
               $pre_patch_commands.each | $cmd, $cmd_opts | {
-                exec { "Patching as Code - Before patching (High Priority) - ${cmd}":
+                exec { "Patching as Code - Before patching (High Priority) - ${cmd}": # lint:ignore:exec_idempotency
                   *        => delete($cmd_opts, ['before', 'schedule', 'tag']),
                   before   => Class["patching_as_code::${0}::patchday"],
                   schedule => 'Patching as Code - High Priority Patch Window',
@@ -475,10 +478,12 @@ class patching_as_code (
                 ensure    => file,
                 path      => "${facts['puppet_vardir']}/../../patching_as_code/last_run",
                 show_diff => false,
-                content   => Deferred('patching_as_code::last_run', [
-                  $updates_to_install.unique,
-                  $choco_updates_to_install.unique,
-                ]),
+                content   => Deferred('patching_as_code::last_run',
+                  [
+                    $updates_to_install.unique,
+                    $choco_updates_to_install.unique,
+                  ],
+                ),
                 schedule  => 'Patching as Code - Patch Window',
                 require   => File["${facts['puppet_vardir']}/../../patching_as_code"],
                 before    => Anchor['patching_as_code::post'],
@@ -494,10 +499,12 @@ class patching_as_code (
                 ensure    => file,
                 path      => "${facts['puppet_vardir']}/../../patching_as_code/high_prio_last_run",
                 show_diff => false,
-                content   => Deferred('patching_as_code::high_prio_last_run', [
-                  $high_prio_updates_to_install.unique,
-                  $high_prio_choco_updates_to_install.unique,
-                ]),
+                content   => Deferred('patching_as_code::high_prio_last_run',
+                  [
+                    $high_prio_updates_to_install.unique,
+                    $high_prio_choco_updates_to_install.unique,
+                  ],
+                ),
                 schedule  => 'Patching as Code - High Priority Patch Window',
                 require   => File["${facts['puppet_vardir']}/../../patching_as_code"],
                 before    => Anchor['patching_as_code::post'],
@@ -528,7 +535,7 @@ class patching_as_code (
               # Perform post-patching Execs
               if ($updates_to_install.count + $choco_updates_to_install.count > 0) and $reboot {
                 $post_patch_commands.each | $cmd, $cmd_opts | {
-                  exec { "Patching as Code - After patching - ${cmd}":
+                  exec { "Patching as Code - After patching - ${cmd}": # lint:ignore:exec_idempotency
                     *        => delete($cmd_opts, ['require', 'before', 'schedule', 'tag']),
                     require  => Anchor['patching_as_code::post'],
                     schedule => 'Patching as Code - Patch Window',
@@ -538,7 +545,7 @@ class patching_as_code (
               }
               if ($high_prio_updates_to_install.count + $high_prio_choco_updates_to_install.count > 0) and $high_prio_reboot {
                 $post_patch_commands.each | $cmd, $cmd_opts | {
-                  exec { "Patching as Code - After patching (High Priority) - ${cmd}":
+                  exec { "Patching as Code - After patching (High Priority) - ${cmd}": # lint:ignore:exec_idempotency
                     *        => delete($cmd_opts, ['require', 'before', 'schedule', 'tag']),
                     require  => Anchor['patching_as_code::post'],
                     schedule => 'Patching as Code - High Priority Patch Window',
@@ -610,7 +617,7 @@ class patching_as_code (
               # Do not reboot after patching, just run post_patch commands if given
               if ($updates_to_install.count + $choco_updates_to_install.count > 0) {
                 $post_patch_commands.each | $cmd, $cmd_opts | {
-                  exec { "Patching as Code - After patching - ${cmd}":
+                  exec { "Patching as Code - After patching - ${cmd}": # lint:ignore:exec_idempotency
                     *        => delete($cmd_opts, ['require', 'schedule', 'tag']),
                     require  => Anchor['patching_as_code::post'],
                     schedule => 'Patching as Code - Patch Window',
@@ -620,7 +627,7 @@ class patching_as_code (
               }
               if ($high_prio_updates_to_install.count + $high_prio_choco_updates_to_install.count > 0) {
                 $post_patch_commands.each | $cmd, $cmd_opts | {
-                  exec { "Patching as Code - After patching (High Priority)- ${cmd}":
+                  exec { "Patching as Code - After patching (High Priority)- ${cmd}": # lint:ignore:exec_idempotency
                     *        => delete($cmd_opts, ['require', 'schedule', 'tag']),
                     require  => Anchor['patching_as_code::post'],
                     schedule => 'Patching as Code - High Priority Patch Window',

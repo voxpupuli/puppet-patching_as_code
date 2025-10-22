@@ -1,5 +1,5 @@
 # define patching_as_code::kb
-# 
+#
 # @summary
 #   This define gets called by init.pp to install Windows KB patches.
 # @param [String] ensure
@@ -20,7 +20,7 @@ define patching_as_code::kb (
       case $kb {
         'KB890830', 'KB2267602', 'KB2461484', 'KB4052623': {
           #Don't skip recurring monthly updates (Malicious Software Removal Tool, Windows Defender/SCEP updates)
-          exec { "Install ${kb}":
+          exec { "Install ${kb}": # lint:ignore:exec_idempotency
             command   => template('patching_as_code/install_kb.ps1.erb'),
             provider  => 'powershell',
             timeout   => 14400,
