@@ -1,5 +1,5 @@
 # Class: patching_as_code::linux::patchday
-# 
+#
 # @summary
 #   This class gets called by init.pp to perform the actual patching on Linux.
 # @param [Array] updates

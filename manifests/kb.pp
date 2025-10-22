@@ -1,5 +1,5 @@
 # define patching_as_code::kb
-# 
+#
 # @summary
 #   This define gets called by init.pp to install Windows KB patches.
 # @param [String] ensure
