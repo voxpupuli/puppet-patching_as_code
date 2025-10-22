@@ -1,19 +1,19 @@
 # @summary
 #   Framework for patch management as code. Works alongside the puppetlabs/pe_patch or albatrossflavour/os_patching modules
-# 
+#
 # @example Using the module with defaults, or controlling options through Hiera
 #   include patching_as_code
-# 
+#
 # @example Forcing the classification of pe_patch on PE 2019.8.0+
 #   class {'patching_as_code':
 #     classify_pe_patch => true
 #   }
-# 
+#
 # @example Forcing the use of albatrossflavour/os_patching on PE 2019.8.0+
 #   class {'patching_as_code':
 #     use_pe_patch => false
 #   }
-# 
+#
 # @param Variant[String,Array[String]] patch_group
 #   Name(s) of the patch_group(s) for this node. Must match one or more of the patch groups in $patch_schedule
 #   To assign multiple patch groups, provide this parameter as an array
@@ -107,7 +107,7 @@
 #   When disabled (default), patches are not installed over a metered link.
 # @param [Optional[String]] plan_patch_fact
 #   Reserved parameter for running `patching_as_code` via a Plan (future functionality).
-# 
+#
 class patching_as_code (
   Variant[String,Array[String]] $patch_group, #lint:ignore:parameter_documentation
   Hash                          $patch_schedule,
