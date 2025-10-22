@@ -231,32 +231,35 @@ class patching_as_code (
   file { 'patching_configuration.json':
     ensure    => file,
     path      => "${facts['puppet_vardir']}/../../facter/facts.d/patching_configuration.json",
-    content   => to_json_pretty( { # lint:ignore:manifest_whitespace_opening_brace_before
-      patching_as_code_config => {
-        allowlist                 => $allowlist,
-        blocklist                 => $blocklist,
-        high_priority_list        => $high_priority_list,
-        allowlist_choco           => $allowlist_choco,
-        blocklist_choco           => $blocklist_choco,
-        high_priority_list_choco  => $high_priority_list_choco,
-        enable_patching           => $enable_patching,
-        patch_fact                => $patch_fact,
-        patch_group               => $patch_groups,
-        patch_schedule            => if $active_pg in ['always', 'never'] {
-          { $active_pg => 'N/A' }
-        } else {
-          $patch_schedule.filter |$item| { $item[0] in $patch_groups }
+    content   => to_json_pretty(
+      {
+        patching_as_code_config => {
+          allowlist                 => $allowlist,
+          blocklist                 => $blocklist,
+          high_priority_list        => $high_priority_list,
+          allowlist_choco           => $allowlist_choco,
+          blocklist_choco           => $blocklist_choco,
+          high_priority_list_choco  => $high_priority_list_choco,
+          enable_patching           => $enable_patching,
+          patch_fact                => $patch_fact,
+          patch_group               => $patch_groups,
+          patch_schedule            => if $active_pg in ['always', 'never'] {
+            { $active_pg => 'N/A' }
+          } else {
+            $patch_schedule.filter |$item| { $item[0] in $patch_groups }
+          },
+          high_priority_patch_group => $high_priority_patch_group,
+          post_patch_commands       => $post_patch_commands,
+          pre_patch_commands        => $pre_patch_commands,
+          pre_reboot_commands       => $pre_reboot_commands,
+          patch_on_metered_links    => $patch_on_metered_links,
+          security_only             => $security_only,
+          patch_choco               => $patch_choco,
+          unsafe_process_list       => $unsafe_process_list,
         },
-        high_priority_patch_group => $high_priority_patch_group,
-        post_patch_commands       => $post_patch_commands,
-        pre_patch_commands        => $pre_patch_commands,
-        pre_reboot_commands       => $pre_reboot_commands,
-        patch_on_metered_links    => $patch_on_metered_links,
-        security_only             => $security_only,
-        patch_choco               => $patch_choco,
-        unsafe_process_list       => $unsafe_process_list,
       },
-    }, false),
+      false,
+    ),
     show_diff => false,
   }
 
@@ -475,10 +478,12 @@ class patching_as_code (
                 ensure    => file,
                 path      => "${facts['puppet_vardir']}/../../patching_as_code/last_run",
                 show_diff => false,
-                content   => Deferred('patching_as_code::last_run', [
-                  $updates_to_install.unique,
-                  $choco_updates_to_install.unique,
-                ]),
+                content   => Deferred('patching_as_code::last_run',
+                  [
+                    $updates_to_install.unique,
+                    $choco_updates_to_install.unique,
+                  ],
+                ),
                 schedule  => 'Patching as Code - Patch Window',
                 require   => File["${facts['puppet_vardir']}/../../patching_as_code"],
                 before    => Anchor['patching_as_code::post'],
@@ -494,10 +499,12 @@ class patching_as_code (
                 ensure    => file,
                 path      => "${facts['puppet_vardir']}/../../patching_as_code/high_prio_last_run",
                 show_diff => false,
-                content   => Deferred('patching_as_code::high_prio_last_run', [
-                  $high_prio_updates_to_install.unique,
-                  $high_prio_choco_updates_to_install.unique,
-                ]),
+                content   => Deferred('patching_as_code::high_prio_last_run',
+                  [
+                    $high_prio_updates_to_install.unique,
+                    $high_prio_choco_updates_to_install.unique,
+                  ],
+                ),
                 schedule  => 'Patching as Code - High Priority Patch Window',
                 require   => File["${facts['puppet_vardir']}/../../patching_as_code"],
                 before    => Anchor['patching_as_code::post'],
