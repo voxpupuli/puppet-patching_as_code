@@ -437,7 +437,7 @@ class patching_as_code (
             # Run pre-patch commands if provided
             if ($updates_to_install.count + $choco_updates_to_install.count > 0) {
               $pre_patch_commands.each | $cmd, $cmd_opts | {
-                exec { "Patching as Code - Before patching - ${cmd}":
+                exec { "Patching as Code - Before patching - ${cmd}": # lint:ignore:exec_idempotency
                   *        => delete($cmd_opts, ['before', 'schedule', 'tag']),
                   before   => Class["patching_as_code::${0}::patchday"],
                   schedule => 'Patching as Code - Patch Window',
@@ -447,7 +447,7 @@ class patching_as_code (
             }
             if ($high_prio_updates_to_install.count + $high_prio_choco_updates_to_install.count > 0) {
               $pre_patch_commands.each | $cmd, $cmd_opts | {
-                exec { "Patching as Code - Before patching (High Priority) - ${cmd}":
+                exec { "Patching as Code - Before patching (High Priority) - ${cmd}": # lint:ignore:exec_idempotency
                   *        => delete($cmd_opts, ['before', 'schedule', 'tag']),
                   before   => Class["patching_as_code::${0}::patchday"],
                   schedule => 'Patching as Code - High Priority Patch Window',
@@ -535,7 +535,7 @@ class patching_as_code (
               # Perform post-patching Execs
               if ($updates_to_install.count + $choco_updates_to_install.count > 0) and $reboot {
                 $post_patch_commands.each | $cmd, $cmd_opts | {
-                  exec { "Patching as Code - After patching - ${cmd}":
+                  exec { "Patching as Code - After patching - ${cmd}": # lint:ignore:exec_idempotency
                     *        => delete($cmd_opts, ['require', 'before', 'schedule', 'tag']),
                     require  => Anchor['patching_as_code::post'],
                     schedule => 'Patching as Code - Patch Window',
@@ -545,7 +545,7 @@ class patching_as_code (
               }
               if ($high_prio_updates_to_install.count + $high_prio_choco_updates_to_install.count > 0) and $high_prio_reboot {
                 $post_patch_commands.each | $cmd, $cmd_opts | {
-                  exec { "Patching as Code - After patching (High Priority) - ${cmd}":
+                  exec { "Patching as Code - After patching (High Priority) - ${cmd}": # lint:ignore:exec_idempotency
                     *        => delete($cmd_opts, ['require', 'before', 'schedule', 'tag']),
                     require  => Anchor['patching_as_code::post'],
                     schedule => 'Patching as Code - High Priority Patch Window',
@@ -617,7 +617,7 @@ class patching_as_code (
               # Do not reboot after patching, just run post_patch commands if given
               if ($updates_to_install.count + $choco_updates_to_install.count > 0) {
                 $post_patch_commands.each | $cmd, $cmd_opts | {
-                  exec { "Patching as Code - After patching - ${cmd}":
+                  exec { "Patching as Code - After patching - ${cmd}": # lint:ignore:exec_idempotency
                     *        => delete($cmd_opts, ['require', 'schedule', 'tag']),
                     require  => Anchor['patching_as_code::post'],
                     schedule => 'Patching as Code - Patch Window',
@@ -627,7 +627,7 @@ class patching_as_code (
               }
               if ($high_prio_updates_to_install.count + $high_prio_choco_updates_to_install.count > 0) {
                 $post_patch_commands.each | $cmd, $cmd_opts | {
-                  exec { "Patching as Code - After patching (High Priority)- ${cmd}":
+                  exec { "Patching as Code - After patching (High Priority)- ${cmd}": # lint:ignore:exec_idempotency
                     *        => delete($cmd_opts, ['require', 'schedule', 'tag']),
                     require  => Anchor['patching_as_code::post'],
                     schedule => 'Patching as Code - High Priority Patch Window',

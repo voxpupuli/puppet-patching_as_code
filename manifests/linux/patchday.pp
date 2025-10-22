@@ -40,7 +40,7 @@ class patching_as_code::linux::patchday (
   }
 
   if $updates.count > 0 {
-    exec { 'Patching as Code - Clean Cache':
+    exec { 'Patching as Code - Clean Cache': # lint:ignore:exec_idempotency
       command  => $cmd,
       path     => $cmd_path,
       schedule => 'Patching as Code - Patch Window',
@@ -56,7 +56,7 @@ class patching_as_code::linux::patchday (
   }
 
   if $high_prio_updates.count > 0 {
-    exec { 'Patching as Code - Clean Cache (High Priority)':
+    exec { 'Patching as Code - Clean Cache (High Priority)': # lint:ignore:exec_idempotency
       command  => $cmd,
       path     => $cmd_path,
       schedule => 'Patching as Code - High Priority Patch Window',
