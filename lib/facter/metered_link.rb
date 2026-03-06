@@ -10,7 +10,7 @@ Facter.add('metered_link') do
       __dir__,
       '..',
       'patching_as_code',
-      'metered_link.ps1'
+      'metered_link.ps1',
     )
     Facter::Util::Resolution.exec("#{powershell} -ExecutionPolicy Bypass -NoProfile -NoLogo -NonInteractive -File #{checker_script}").to_s == 'true'
   end

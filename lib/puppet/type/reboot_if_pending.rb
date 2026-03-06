@@ -38,7 +38,7 @@ Puppet::Type.newtype(:reboot_if_pending) do
         '..',
         '..',
         'patching_as_code',
-        'pending_reboot.ps1'
+        'pending_reboot.ps1',
       )
       pending_reboot = Puppet::Util::Execution.execute("#{powershell} -ExecutionPolicy Bypass -NoProfile -NoLogo -NonInteractive -File #{checker_script}", { failonfail: false }).exitstatus.to_i.zero?
     when 'linux'
@@ -48,7 +48,7 @@ Puppet::Type.newtype(:reboot_if_pending) do
         '..',
         '..',
         'patching_as_code',
-        'pending_reboot.sh'
+        'pending_reboot.sh',
       )
       pending_reboot = Puppet::Util::Execution.execute("/bin/sh #{checker_script}", { failonfail: false }).exitstatus.to_i.zero?
     else
@@ -93,7 +93,7 @@ Puppet::Type.newtype(:reboot_if_pending) do
                            apply: 'immediately',
                            schedule: parameter(:patch_window).value,
                            before: 'Anchor[patching_as_code::start]',
-                           require: pre_reboot_resources
+                           require: pre_reboot_resources,
                          ))
 
     catalog.add_resource(Puppet::Type.type('notify').new(
@@ -101,7 +101,7 @@ Puppet::Type.newtype(:reboot_if_pending) do
                            schedule: parameter(:patch_window).value,
                            notify: 'Reboot[Patching as Code - Pending OS reboot]',
                            before: 'Anchor[patching_as_code::start]',
-                           require: pre_reboot_resources
+                           require: pre_reboot_resources,
                          ))
   end
 
