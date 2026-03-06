@@ -114,11 +114,15 @@ Options:
 * **:max_runs** `String`: How many Puppet runs during the patch window can Puppet install patches. Must be at least 1.
 * **:reboot** `String`: Reboot behavior, valid options: 'always', 'never', 'ifneeded'
 
+Default value: `{ 'weekly' => { 'day_of_week' => 'Thursday', 'count_of_week' => [1, 2, 3, 4, 5], 'hours' => '09:00 - 11:00', 'max_runs' => 4, 'reboot' => 'ifneeded' }, 'testing' => { 'day_of_week' => 'Thursday', 'count_of_week' => 2, 'hours' => '07:00 - 09:00', 'max_runs' => 4, 'reboot' => 'ifneeded' }, 'early' => { 'day_of_week' => 'Monday', 'count_of_week' => 3, 'hours' => '20:00 - 22:00', 'max_runs' => 4, 'reboot' => 'ifneeded' }, 'primary' => { 'day_of_week' => 'Friday', 'count_of_week' => 3, 'hours' => '22:00 - 00:00', 'max_runs' => 4, 'reboot' => 'ifneeded' }, 'secondary' => { 'day_of_week' => 'Saturday', 'count_of_week' => 3, 'hours' => '22:00 - 00:00', 'max_runs' => 4, 'reboot' => 'ifneeded' }, 'late' => { 'day_of_week' => 'Saturday', 'count_of_week' => 4, 'hours' => '22:00 - 00:00', 'max_runs' => 4, 'reboot' => 'ifneeded' } }`
+
 ##### <a name="-patching_as_code--blocklist"></a>`blocklist`
 
 Data type: `Array`
 
 List of updates to block from installing
+
+Default value: `[]`
 
 ##### <a name="-patching_as_code--allowlist"></a>`allowlist`
 
@@ -126,17 +130,23 @@ Data type: `Array`
 
 List of updates that are allowed to be installed. Any updates not on this list get blocked.
 
+Default value: `[]`
+
 ##### <a name="-patching_as_code--blocklist_choco"></a>`blocklist_choco`
 
 Data type: `Array`
 
 List of Chocolatey updates to block from installing
 
+Default value: `[]`
+
 ##### <a name="-patching_as_code--allowlist_choco"></a>`allowlist_choco`
 
 Data type: `Array`
 
 List of Chocolatey updates that are allowed to be installed. Any Chocolatey updates not on this list get blocked.
+
+Default value: `[]`
 
 ##### <a name="-patching_as_code--high_priority_patch_group"></a>`high_priority_patch_group`
 
@@ -145,11 +155,15 @@ Data type: `String`
 Name of the high_priority_patch_group for this node. Must match a patch group in `$patch_schedule`
 This patch schedule will only be used for patches in the `$high_priority_list`.
 
+Default value: `'never'`
+
 ##### <a name="-patching_as_code--high_priority_list"></a>`high_priority_list`
 
 Data type: `Array`
 
 List of updates to install on the patch schedule set by `$high_priority_patch_group`.
+
+Default value: `[]`
 
 ##### <a name="-patching_as_code--high_priority_list_choco"></a>`high_priority_list_choco`
 
@@ -157,12 +171,16 @@ Data type: `Array`
 
 List of Chocolatey updates to install on the patch schedule set by `$high_priority_patch_group`.
 
+Default value: `[]`
+
 ##### <a name="-patching_as_code--unsafe_process_list"></a>`unsafe_process_list`
 
 Data type: `Array`
 
 List of processes that will cause patching to be skipped if any of the processes in the list are active on the system.
 Prepend an entry with `{full}` to match against the full process arguments.
+
+Default value: `[]`
 
 ##### <a name="-patching_as_code--pre_patch_commands"></a>`pre_patch_commands`
 
@@ -176,6 +194,8 @@ Options:
 * **:path** `String`: The path for the command
 * **:provider** `String`: The provider for the command
 
+Default value: `{}`
+
 ##### <a name="-patching_as_code--post_patch_commands"></a>`post_patch_commands`
 
 Data type: `Hash`
@@ -187,6 +207,8 @@ Options:
 * **:command** `String`: The post-patching command to execute
 * **:path** `String`: The path for the command
 * **:provider** `String`: The provider for the command
+
+Default value: `{}`
 
 ##### <a name="-patching_as_code--pre_reboot_commands"></a>`pre_reboot_commands`
 
@@ -200,6 +222,8 @@ Options:
 * **:path** `String`: The path for the command
 * **:provider** `String`: The provider for the command
 Note: the provider for the command gets forced to `posix` on Linux and `powershell` on Windows
+
+Default value: `{}`
 
 ##### <a name="-patching_as_code--fact_upload"></a>`fact_upload`
 
@@ -295,6 +319,8 @@ Default value: `undef`
 Data type: `Variant[String,Array[String]]`
 
 
+
+Default value: `'primary'`
 
 ### <a name="patching_as_code--high_prio_reboot"></a>`patching_as_code::high_prio_reboot`
 
