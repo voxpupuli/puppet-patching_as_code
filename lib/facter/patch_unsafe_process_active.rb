@@ -3,7 +3,7 @@
 require 'pathname'
 
 Facter.add('patch_unsafe_process_active') do
-  confine { Facter.value(:kernel) == 'windows' || Facter.value(:kernel) == 'Linux' }
+  confine { %w[windows Linux].include?(Facter.value(:kernel)) }
   setcode do
     def process_running(processname, full = false)
       case Facter.value(:kernel)

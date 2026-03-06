@@ -49,7 +49,7 @@ Facter.add('patching_as_code') do
         'last_high_prio_patch_run'                      => '',
         'days_since_last_high_prio_patch_run'           => 0,
         'patches_installed_on_last_high_prio_run'       => [],
-        'choco_patches_installed_on_last_high_prio_run' => []
+        'choco_patches_installed_on_last_high_prio_run' => [],
       }
     end
   end

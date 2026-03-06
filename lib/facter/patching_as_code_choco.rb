@@ -40,7 +40,7 @@ Facter.add('patching_as_code_choco') do
       {
         'package_update_count' => 0,
         'packages' => [],
-        'pinned_packages' => []
+        'pinned_packages' => [],
       }
     end
   end
