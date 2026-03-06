@@ -306,7 +306,7 @@ This solution will patching to initiate whenever an agent run occurs inside the 
 ## Transfer Notice
 
 This plugin was originally authored by [Perforce](http://www.perforce.com).
-The maintainer preferred that Vox PUpuli take ownership of the module for future improvement and maintenance.
+The maintainer preferred that Vox Pupuli take ownership of the module for future improvement and maintenance.
 Existing pull requests and issues were transferred over, please fork and continue to contribute here instead of Perforce.
 
 Previously: https://github.com/puppetlabs/puppetlabs-patching_as_code
