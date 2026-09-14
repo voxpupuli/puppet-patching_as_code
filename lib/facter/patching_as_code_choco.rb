@@ -7,7 +7,7 @@ Facter.add('patching_as_code_choco') do
       programdata = ENV.fetch('ProgramData', nil)
       choco = "#{programdata}\\chocolatey\\bin\\choco.exe"
       output = if File.exist?(choco)
-                 Facter::Util::Resolution.exec("#{choco} outdated -r").to_s.split("\n")
+                 Facter::Core::Execution.execute("#{choco} outdated -r").to_s.split("\n")
                else
                  ''
                end
