@@ -4,6 +4,18 @@ All notable changes to this project will be documented in this file.
 Each new release typically also includes the latest modulesync defaults.
 These should not affect the functionality of the module.
 
+## [v3.1.0](https://github.com/voxpupuli/puppet-patching_as_code/tree/v3.1.0) (2026-09-14)
+
+[Full Changelog](https://github.com/voxpupuli/puppet-patching_as_code/compare/v3.0.1...v3.1.0)
+
+**Implemented enhancements:**
+
+- replace deprecated calls with Facter::Core::Execution [\#136](https://github.com/voxpupuli/puppet-patching_as_code/pull/136) ([corporate-gadfly](https://github.com/corporate-gadfly))
+
+**Merged pull requests:**
+
+- Update README.md - Fix Vox Pupuli name [\#132](https://github.com/voxpupuli/puppet-patching_as_code/pull/132) ([arjenz](https://github.com/arjenz))
+
 ## [v3.0.1](https://github.com/voxpupuli/puppet-patching_as_code/tree/v3.0.1) (2025-10-22)
 
 [Full Changelog](https://github.com/voxpupuli/puppet-patching_as_code/compare/v3.0.0...v3.0.1)
