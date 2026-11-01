@@ -689,4 +689,3 @@ The KB number of the patch you want to install (e.g. KB123456)
 Data type: `Boolean`
 
 Perform a restart after installing the patch
-
